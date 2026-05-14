@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minigolf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">Browser Game</p>
+        <h1>Minigolf</h1>
+        <p class="subtitle">Minimalistická 2D minigolfová hra s pěti levely, bunkery a přesným mířením myší.</p>
+      </div>
+      <div class="hero-actions">
+        <button id="start-button" class="primary-button">Spustit hru</button>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="panel game-panel">
+        <div class="mode-switch" role="group" aria-label="Výběr režimu">
+          <button id="single-mode-button" class="mode-button active" type="button">1 hráč</button>
+          <button id="duo-mode-button" class="mode-button" type="button">2 hráči</button>
+        </div>
+
+        <div class="hud">
+          <div class="hud-item">
+            <span class="hud-label">Level</span>
+            <strong id="level-label">1 / 5</strong>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Na tahu</span>
+            <strong id="player-label">Hráč 1</strong>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Rány</span>
+            <strong id="strokes-label">0</strong>
+          </div>
+          <div class="hud-item">
+            <span class="hud-label">Hráč 1 celkem</span>
+            <strong id="player-one-total-label">0</strong>
+          </div>
+          <div id="player-two-card" class="hud-item hidden">
+            <span class="hud-label">Hráč 2 celkem</span>
+            <strong id="player-two-total-label">0</strong>
+          </div>
+        </div>
+
+        <div class="canvas-wrap">
+          <canvas id="game-canvas" width="960" height="540" aria-label="Hrací plocha minigolfu"></canvas>
+          <div id="overlay" class="overlay">
+            <div class="overlay-card">
+              <h2 id="overlay-title">Minigolf</h2>
+              <p id="overlay-text">Klikni na Start a pak táhni myší od míčku pro směr a sílu odpalu.</p>
+              <button id="overlay-button" class="primary-button">Start</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <aside class="panel side-panel">
+        <div class="info-block">
+          <h2>Ovládání</h2>
+          <p>Klikni na stojící míček, drž tlačítko a táhni opačným směrem, než kam chceš odpálit.</p>
+        </div>
+        <div class="info-block">
+          <h2>Cíl</h2>
+          <p>Dostaň míček do jamky na co nejméně ran. Ve dvou hráčích hraje každý stejnou jamku zvlášť.</p>
+        </div>
+        <div class="info-block">
+          <h2>Tip</h2>
+          <p>Bunkery míček hodně brzdí, takže se často vyplatí hrát kolem nich, a ne přes ně.</p>
+        </div>
+        <div class="info-block">
+          <h2>Zvuk</h2>
+          <div class="audio-controls">
+            <button id="mute-button" class="audio-button" type="button">Ztlumit</button>
+            <label class="audio-slider-wrap" for="volume-slider">
+              <span>Hlasitost</span>
+              <input id="volume-slider" type="range" min="0" max="100" value="70">
+            </label>
+          </div>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
