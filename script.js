@@ -1163,6 +1163,7 @@ function setMode(mode) {
 }
 
 canvas.addEventListener("pointerdown", (event) => {
+  event.preventDefault();
   if (!state.isRunning || ballIsMoving()) {
     return;
   }
@@ -1178,13 +1179,15 @@ canvas.addEventListener("pointerdown", (event) => {
 });
 
 canvas.addEventListener("pointermove", (event) => {
+  event.preventDefault();
   if (!state.isDragging) {
     return;
   }
   state.dragCurrent = getPointerPosition(event);
 });
 
-canvas.addEventListener("pointerup", () => {
+canvas.addEventListener("pointerup", (event) => {
+  event.preventDefault();
   if (!state.isDragging) {
     return;
   }
@@ -1192,7 +1195,8 @@ canvas.addEventListener("pointerup", () => {
   clearDrag();
 });
 
-canvas.addEventListener("pointerleave", () => {
+canvas.addEventListener("pointerleave", (event) => {
+  event.preventDefault();
   if (!state.isDragging) {
     return;
   }

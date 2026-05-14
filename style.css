@@ -148,6 +148,7 @@ h1 {
   position: relative;
   overflow: hidden;
   border-radius: 26px;
+  touch-action: none;
 }
 
 canvas {
@@ -156,6 +157,7 @@ canvas {
   height: auto;
   aspect-ratio: 16 / 9;
   background: linear-gradient(180deg, #6fc06d, #3f9153);
+  touch-action: none;
 }
 
 .overlay {
