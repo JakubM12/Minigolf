@@ -651,9 +651,10 @@ function playCollisionSound(impactSpeed) {
 }
 
 function updateSandSound(inSand, speed) {
-  const sandVolume = 0.2 + Math.max(0, Math.min(1, speed / 6.5)) * 0.45;
+  const shouldPlay = inSand && speed > 0.12;
+  const sandVolume = 0.16 + Math.max(0, Math.min(1, speed / 6.5)) * 0.42;
 
-  if (inSand) {
+  if (shouldPlay) {
     audioManager.playSound("sand", sandVolume);
     state.wasInSand = true;
     return;
