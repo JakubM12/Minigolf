@@ -28,6 +28,10 @@ body {
     linear-gradient(135deg, var(--bg), var(--bg-accent));
 }
 
+body.game-page {
+  overscroll-behavior: none;
+}
+
 .app-shell {
   width: min(1200px, calc(100% - 32px));
   margin: 0 auto;
@@ -158,6 +162,7 @@ canvas {
   aspect-ratio: 16 / 9;
   background: linear-gradient(180deg, #6fc06d, #3f9153);
   touch-action: none;
+  -ms-touch-action: none;
 }
 
 .overlay {

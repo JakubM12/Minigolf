@@ -1173,6 +1173,7 @@ canvas.addEventListener("pointerdown", (event) => {
     return;
   }
 
+  canvas.setPointerCapture(event.pointerId);
   state.isDragging = true;
   state.dragStart = { x: state.ball.x, y: state.ball.y };
   state.dragCurrent = pointer;
@@ -1192,6 +1193,9 @@ canvas.addEventListener("pointerup", (event) => {
     return;
   }
   hitBall();
+  if (canvas.hasPointerCapture(event.pointerId)) {
+    canvas.releasePointerCapture(event.pointerId);
+  }
   clearDrag();
 });
 
@@ -1199,6 +1203,17 @@ canvas.addEventListener("pointerleave", (event) => {
   event.preventDefault();
   if (!state.isDragging) {
     return;
+  }
+  if (canvas.hasPointerCapture(event.pointerId)) {
+    canvas.releasePointerCapture(event.pointerId);
+  }
+  clearDrag();
+});
+
+canvas.addEventListener("pointercancel", (event) => {
+  event.preventDefault();
+  if (canvas.hasPointerCapture(event.pointerId)) {
+    canvas.releasePointerCapture(event.pointerId);
   }
   clearDrag();
 });
